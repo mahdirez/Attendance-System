@@ -17,7 +17,7 @@ const LoginForm: React.FC = () => {
     password: "",
   });
   const [formErrors, setFormErrors] = useState<LoginFormErrors>({});
-  const [isSumbitted, setIsSubmitted] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,38 +59,67 @@ const LoginForm: React.FC = () => {
     }
   };
   return (
-    <div>
-      <h2>ورود</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            value={formValues.email}
-            onChange={handleInputChange}
-            placeholder="you@example.com"
-          />
-          {isSumbitted && formErrors.email && <span>{formErrors.email} </span>}
-        </div>
-        <div>
-          <label htmlFor="password">رمز عبور</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formValues.password}
-            onChange={handleInputChange}
-            placeholder="••••••••"
-          />
-          {isSumbitted && formErrors.password && (
-            <span>{formErrors.password} </span>
-          )}
-        </div>
-        <div>
-          <button type="submit">ورود</button>
-        </div>
-      </form>
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
+          ورود
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              ایمیل
+            </label>
+            <input
+              id="email"
+              name="email"
+              value={formValues.email}
+              onChange={handleInputChange}
+              placeholder="you@example.com"
+              className={`mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm ${
+                isSubmitted && formErrors.email ? "border-red-500" : ""
+              }`}
+            />
+            {isSubmitted && formErrors.email && (
+              <span className="text-red-500 text-sm">{formErrors.email} </span>
+            )}
+          </div>
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              رمز عبور
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formValues.password}
+              onChange={handleInputChange}
+              placeholder="••••••••"
+              className={`mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm ${
+                isSubmitted && formErrors.password ? "border-red-500" : ""
+              }`}
+            />
+            {isSubmitted && formErrors.password && (
+              <span className="text-red-500 text-sm">
+                {formErrors.password}
+              </span>
+            )}
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md shadow-sm focus:outline-none"
+            >
+              ورود
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
