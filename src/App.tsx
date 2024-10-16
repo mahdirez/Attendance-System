@@ -2,7 +2,9 @@ import AppRoutes from "./routes/AppRoutes";
 
 const App: React.FC = () => {
   return (
-    <AppRoutes/>
+    <div>
+      <AppRoutes />
+    </div>
   );
 };
 
