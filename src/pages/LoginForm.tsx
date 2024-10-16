@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginFormFields {
   email: string;
@@ -11,6 +12,7 @@ interface LoginFormErrors {
 }
 
 const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
   //state
   const [formValues, setFormValues] = useState<LoginFormFields>({
     email: "",
@@ -56,6 +58,7 @@ const LoginForm: React.FC = () => {
 
     if (validateForm()) {
       console.log("form value", formValues);
+      navigate("/Dashboard")
     }
   };
   return (
