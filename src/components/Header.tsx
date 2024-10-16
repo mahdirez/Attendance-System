@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <header className="w-full bg-white shadow p-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold">مدیریت کارمند</h1>
+      <h1 className="text-xl font-bold">نمای کلی</h1>
       <div className="flex items-center">
         <span className="mr-4">
           {persianDate.jy}/{persianDate.jm}/{persianDate.jd}
